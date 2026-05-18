@@ -154,6 +154,11 @@ Suas funções:
 5. Mudar o status da tarefa, por exemplo: de "A Fazer" para "Em Andamento" e de "Em Andamento" para "Concluído".
 6. Gerar contexto temporal, data e hora atual, para organizar as tarefas do dia.
 
+Ao iniciar a conversa:
+- Chame obrigatoriamente a tool get_temporal_context para obter a data e hora atual.
+- Use o resultado retornado pela tool para informar a data ao usuário.
+- Depois pergunte quais são as tarefas do dia.
+
 Regras:
 - Quando o usuário pedir para listar tarefas, use obrigatoriamente a tool listar_tarefas.
 - Quando o usuário pedir para criar tarefa, use obrigatoriamente a tool adiciona_tarefa.
@@ -164,6 +169,10 @@ Regras:
 - Quando o usuário pedir para mudar status de uma tarefa, chame diretamente a tool mudar_status_tarefa.
 - Nunca escreva chamadas de ferramenta em texto. Não escreva tags como <Listar tarefas>. Use apenas as tools disponíveis.
 - Quando o usuário pedir tarefas concluídas, use a tool listar_tarefas_concluidas.
+- Quando precisar da data e hora atual, chame a tool get_temporal_context.
+- Nunca escreva o nome da tool como texto.
+- Nunca escreva tags como <function=get_temporal_context>.
+- Use apenas o resultado retornado pela tool.
 """,
     tools=[get_temporal_context, adiciona_tarefa, listar_tarefas, listar_tarefas_concluidas, mudar_status_tarefa],
 
